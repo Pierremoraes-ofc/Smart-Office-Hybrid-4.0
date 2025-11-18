@@ -40,34 +40,25 @@
 Smart Office Hybrid 4.0 is an AI-powered universal dashboard. It reads your existing business data (SQL tables/joins/models) to generate analytical charts, KPIs and insights. As a hybrid solution, you can plug it into any project that exposes data. If you need help defining the data, provide your database model (tables for `dso_grafico`, joins in `dso_grafico_join`, and chart models in `dso_model_grafico`) to your AI assistant (Groq, ChatGPT, Claude, etc.) and it can generate the setup you need.
 
 ### 🖼 Visual Demo
-- Add screenshots or GIFs here (Admin, Dashboard, Graph Builder).
-<p align="center">
-  <img src="images/Screenshot_1.png" width="450" alt="Smart Office Hybrid 4.0 Logo">
-</p>
-<p align="center">
-  <img src="images/Screenshot_2.png" width="450" alt="Smart Office Hybrid 4.0 Logo">
-</p>
-<p align="center">
-  <img src="images/Screenshot_3.png" width="450" alt="Smart Office Hybrid 4.0 Logo">
-</p>
-<p align="center">
-  <img src="images/Screenshot_4.png" width="450" alt="Smart Office Hybrid 4.0 Logo">
-</p>
-<p align="center">
-  <img src="images/Screenshot_5.png" width="450" alt="Smart Office Hybrid 4.0 Logo">
-</p>
-<p align="center">
-  <img src="images/Screenshot_6.png" width="450" alt="Smart Office Hybrid 4.0 Logo">
-</p>
-<p align="center">
-  <img src="images/Screenshot_7.png" width="450" alt="Smart Office Hybrid 4.0 Logo">
-</p>
-<p align="center">
-  <img src="images/Screenshot_8.png" width="450" alt="Smart Office Hybrid 4.0 Logo">
-</p>
-<p align="center">
-  <img src="images/Screenshot_9.png" width="450" alt="Smart Office Hybrid 4.0 Logo">
-</p>
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="images/Screenshot_1.png" width="300" alt="Screenshot 1"></td>
+      <td><img src="images/Screenshot_2.png" width="300" alt="Screenshot 2"></td>
+      <td><img src="images/Screenshot_3.png" width="300" alt="Screenshot 3"></td>
+    </tr>
+    <tr>
+      <td><img src="images/Screenshot_4.png" width="300" alt="Screenshot 4"></td>
+      <td><img src="images/Screenshot_5.png" width="300" alt="Screenshot 5"></td>
+      <td><img src="images/Screenshot_6.png" width="300" alt="Screenshot 6"></td>
+    </tr>
+    <tr>
+      <td><img src="images/Screenshot_7.png" width="300" alt="Screenshot 7"></td>
+      <td><img src="images/Screenshot_8.png" width="300" alt="Screenshot 8"></td>
+      <td><img src="images/Screenshot_9.png" width="300" alt="Screenshot 9"></td>
+    </tr>
+  </table>
+</div>
 
 ### 🏗 Project Architecture
 
@@ -195,7 +186,25 @@ if ($msg === '1') {
 Smart Office Hybrid 4.0 é um dashboard universal com IA. Ele lê seus dados de negócio (tabelas/joins/modelos) para gerar gráficos analíticos, KPIs e insights. Por ser híbrido, pode ser plugado em qualquer projeto que exponha dados. Se precisar de ajuda para definir os dados, forneça seu modelo de banco (tabelas em `dso_grafico`, joins em `dso_grafico_join` e modelos de gráficos em `dso_model_grafico`) para sua IA (Groq, ChatGPT, Claude, etc.) e ela pode gerar o setup desejado.
 
 ### 🖼 Demonstração Visual
-- Adicione aqui prints ou GIFs (Admin, Dashboard, Criar Gráfico).
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="images/Screenshot_1.png" width="300" alt="Screenshot 1"></td>
+      <td><img src="images/Screenshot_2.png" width="300" alt="Screenshot 2"></td>
+      <td><img src="images/Screenshot_3.png" width="300" alt="Screenshot 3"></td>
+    </tr>
+    <tr>
+      <td><img src="images/Screenshot_4.png" width="300" alt="Screenshot 4"></td>
+      <td><img src="images/Screenshot_5.png" width="300" alt="Screenshot 5"></td>
+      <td><img src="images/Screenshot_6.png" width="300" alt="Screenshot 6"></td>
+    </tr>
+    <tr>
+      <td><img src="images/Screenshot_7.png" width="300" alt="Screenshot 7"></td>
+      <td><img src="images/Screenshot_8.png" width="300" alt="Screenshot 8"></td>
+      <td><img src="images/Screenshot_9.png" width="300" alt="Screenshot 9"></td>
+    </tr>
+  </table>
+</div>
 
 ### 🏗 Arquitetura do Projeto
 
