@@ -142,8 +142,8 @@ if ($msg === '1') {
 - Groq AI Docs: `https://console.groq.com/docs`
 
 ### 📜 License
-- CC BY-NC 4.0 — Non-commercial use only
-- `https://creativecommons.org/licenses/by-nc/4.0/`
+- CC BY-NC 4.0 — Non-commercial use only [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC--BY--NC--4.0-blue.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
+
 
 ---
 
@@ -270,5 +270,4 @@ if ($msg === '1') {
 - Groq AI Docs: `https://console.groq.com/docs`
 
 ### 📜 Licença
-- CC BY-NC 4.0 — Uso não comercial
-- `https://creativecommons.org/licenses/by-nc/4.0/`
+- CC BY-NC 4.0 — Uso não comercial [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC--BY--NC--4.0-blue.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
