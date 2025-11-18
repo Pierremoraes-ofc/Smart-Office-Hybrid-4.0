@@ -149,7 +149,6 @@ $step = $_GET['step'] ?? 'db';
               // 5) Criar dso_users_admin (sem limite) e inserir admin inicial
               try {
                 $pdo->exec("
-        DROP TABLE IF EXISTS `dso_users_admin`;
         CREATE TABLE IF NOT EXISTS `dso_users_admin` (
           `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
           `username` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -180,140 +179,134 @@ $step = $_GET['step'] ?? 'db';
 
               // 6) Criar tabela de configurações DSO (registro único id=1) + default
               try {
-                $pdo->exec("
-        DROP TABLE IF EXISTS `dso_settings`;
-        CREATE TABLE IF NOT EXISTS `dso_settings` (
-          `id` int(10) UNSIGNED NOT NULL DEFAULT 1,
-          `public_home` tinyint(1) NOT NULL DEFAULT 1,
-          `language` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pt_BR',
-          `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-          PRIMARY KEY (`id`)
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-      ");
-                ok('Criada tabela dso_settings do Dashboard Smart Office 4.0');
+                  $pdo->exec("
+                      CREATE TABLE `dso_settings` (
+                        `id` int(10) UNSIGNED NOT NULL DEFAULT 1,
+                        `public_home` tinyint(1) NOT NULL DEFAULT 1,
+                        `language` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pt_BR',
+                        `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+                        PRIMARY KEY (`id`)
+                      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+                  ");
 
-                // Garante que exista o registro id=1 com public_home=1
-                $pdo->exec("INSERT IGNORE INTO dso_settings (id, public_home) VALUES (1,1)");
-                ok('Aplicada configuração padrão (public_home = 1)');
+                  // Garante que exista o registro id=1 com public_home=1
+                  $pdo->exec("INSERT IGNORE INTO dso_settings (id, public_home) VALUES (1,1)");
+
+                  ok('Criada tabela dso_settings do Dashboard Smart Office 4.0');
+                  ok('Aplicada configuração padrão (public_home = 1)');
               } catch (PDOException $e) {
-                fail('Erro criando/configurando dso_settings: ' . $e->getMessage());
+                  fail('Erro criando/configurando dso_settings: ' . $e->getMessage());
               }
 
+              // 7) Criar tabela de gráficos base (dso_grafico)
               try {
-                $pdo->exec("
-      DROP TABLE IF EXISTS `dso_grafico`;
-      CREATE TABLE IF NOT EXISTS `dso_grafico` (
-        `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-        `nome` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-        `descricao` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-        `tabela` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
-        `coluna_grupo` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-        `coluna_valor` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-        `agregacao` enum('COUNT','SUM','AVG','MAX','MIN') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'COUNT',
-        `filtro_where` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-        `ativo` tinyint(1) NOT NULL DEFAULT 1,
-        `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-        `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-        PRIMARY KEY (`id`),
-        KEY `idx_dso_grafico_tab` (`tabela`,`ativo`)
-      ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+                  $pdo->exec("
+                      CREATE TABLE IF NOT EXISTS `dso_grafico` (
+                        `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+                        `nome` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
+                        `descricao` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+                        `tabela` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+                        `coluna_grupo` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+                        `coluna_valor` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+                        `agregacao` enum('COUNT','SUM','AVG','MAX','MIN') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'COUNT',
+                        `filtro_where` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+                        `ativo` tinyint(1) NOT NULL DEFAULT 1,
+                        `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+                        `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+                        PRIMARY KEY (`id`),
+                        KEY `idx_dso_grafico_tab` (`tabela`,`ativo`)
+                      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+                  ");
 
-      ");
-
-                ok('Criada tabela dso_grafico do Dashboard Smart Office 4.0');
+                  ok('Criada tabela dso_grafico do Dashboard Smart Office 4.0');
               } catch (PDOException $e) {
-                fail('Erro ao criar dso_grafico: ' . $e->getMessage());
+                  fail('Erro ao criar dso_grafico: ' . $e->getMessage());
               }
 
+              // 8) Criar tabela de JOINs de gráficos (dso_grafico_join)
               try {
-                $pdo->exec("
-      DROP TABLE IF EXISTS `dso_grafico_join`;
-      CREATE TABLE IF NOT EXISTS `dso_grafico_join` (
-        `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-        `grafico_id` int(10) UNSIGNED NOT NULL,
-        `tabela` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
-        `alias` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
-        `tipo_join` enum('INNER','LEFT','RIGHT') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'INNER',
-        `on_expr` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-        `ativo` tinyint(1) NOT NULL DEFAULT 1,
-        `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-        `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-        PRIMARY KEY (`id`),
-        KEY `idx_gj_grafico` (`grafico_id`,`ativo`)
-      ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+                  $pdo->exec("
+                      CREATE TABLE IF NOT EXISTS `dso_grafico_join` (
+                        `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+                        `grafico_id` int(10) UNSIGNED NOT NULL,
+                        `tabela` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+                        `alias` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+                        `tipo_join` enum('INNER','LEFT','RIGHT') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'INNER',
+                        `on_expr` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+                        `ativo` tinyint(1) NOT NULL DEFAULT 1,
+                        `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+                        `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+                        PRIMARY KEY (`id`),
+                        KEY `idx_gj_grafico` (`grafico_id`,`ativo`),
+                        CONSTRAINT `fk_gj_grafico` FOREIGN KEY (`grafico_id`)
+                          REFERENCES `dso_grafico` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+                      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+                  ");
 
-      ALTER TABLE `dso_grafico_join`
-        ADD CONSTRAINT `fk_gj_grafico` FOREIGN KEY (`grafico_id`) REFERENCES `dso_grafico` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-      ");
-
-                ok('Criada tabela dso_grafico_join do Dashboard Smart Office 4.0');
+                  ok('Criada tabela dso_grafico_join do Dashboard Smart Office 4.0');
               } catch (PDOException $e) {
-                fail('Erro ao criar dso_grafico_join: ' . $e->getMessage());
+                  fail('Erro ao criar dso_grafico_join: ' . $e->getMessage());
               }
 
+              // 9) Criar tabela de MODELOS de gráficos (dso_model_grafico)
               try {
-                $pdo->exec("
-      DROP TABLE IF EXISTS `dso_model_grafico`;
-      CREATE TABLE IF NOT EXISTS `dso_model_grafico` (
-        `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-        `nome` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-        `descricao` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-        `grafico_id` int(10) UNSIGNED NOT NULL,
-        `icone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-        `info` enum('INFO','ALERT','SUCCESS','DANGER') CHARACTER SET utf8mb4 NOT NULL DEFAULT 'INFO',
-        `tipo` enum('KPI-1','KPI-2','BARRA','LINHA','DONUT','AREA') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'BARRA',
-        `cor_principal` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-        `cor_secundaria` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-        `exibicao` enum('CARD','FULL','GRANDE','MEDIO','PEQUENO','MINI','MICRO') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'CARD',
-        `ordem` int(10) UNSIGNED NOT NULL DEFAULT 1,
-        `ativo` tinyint(1) NOT NULL DEFAULT 1,
-        `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-        `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-        PRIMARY KEY (`id`),
-        KEY `idx_model_ordem` (`ordem`,`ativo`),
-        KEY `fk_model_grafico` (`grafico_id`)
-      ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+                  $pdo->exec("
+                      CREATE TABLE IF NOT EXISTS `dso_model_grafico` (
+                        `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+                        `nome` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
+                        `descricao` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+                        `grafico_id` int(10) UNSIGNED NOT NULL,
+                        `icone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+                        `info` enum('INFO','ALERT','SUCCESS','DANGER') CHARACTER SET utf8mb4 NOT NULL DEFAULT 'INFO',
+                        `tipo` enum('KPI-1','KPI-2','BARRA','LINHA','DONUT','AREA') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'BARRA',
+                        `cor_principal` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+                        `cor_secundaria` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+                        `exibicao` enum('CARD','FULL','GRANDE','MEDIO','PEQUENO','MINI','MICRO') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'CARD',
+                        `ordem` int(10) UNSIGNED NOT NULL DEFAULT 1,
+                        `ativo` tinyint(1) NOT NULL DEFAULT 1,
+                        `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+                        `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+                        PRIMARY KEY (`id`),
+                        KEY `idx_model_ordem` (`ordem`,`ativo`),
+                        KEY `fk_model_grafico` (`grafico_id`),
+                        CONSTRAINT `fk_model_grafico` FOREIGN KEY (`grafico_id`)
+                          REFERENCES `dso_grafico` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+                      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+                  ");
 
-      ALTER TABLE `dso_model_grafico`
-        ADD CONSTRAINT `fk_model_grafico` FOREIGN KEY (`grafico_id`) REFERENCES `dso_grafico` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-      COMMIT;
-      ");
-
-                ok('Criada tabela dso_model_grafico do Dashboard Smart Office 4.0');
+                  ok('Criada tabela dso_model_grafico do Dashboard Smart Office 4.0');
               } catch (PDOException $e) {
-                fail('Erro ao criar dso_model_grafico: ' . $e->getMessage());
+                  fail('Erro ao criar dso_model_grafico: ' . $e->getMessage());
               }
 
-try {
-                $pdo->exec("
-      DROP TABLE IF EXISTS `dso_apikey_ia`;
-      CREATE TABLE IF NOT EXISTS `dso_apikey_ia` (
-        `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-        `apikey` text COLLATE utf8mb4_unicode_ci NOT NULL,
-        `reg_date` timestamp NOT NULL DEFAULT current_timestamp(),
-        PRIMARY KEY (`id`)
-      ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+              // 10) Criar tabela de API Key da IA (dso_apikey_ia)
+              try {
+                  $pdo->exec("
+                      CREATE TABLE `dso_apikey_ia` (
+                        `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+                        `apikey` text COLLATE utf8mb4_unicode_ci NOT NULL,
+                        `model` ENUM(
+                          'llama-3.1-8b',        -- Grátis
+                          'llama-3-8b',          -- Grátis
+                          'mixtral-8x7b',        -- Grátis
 
-      ALTER TABLE `dso_apikey_ia`
-        ADD COLUMN `model` ENUM(
-          'llama-3.1-8b',        -- Grátis
-          'llama-3-8b',          -- Grátis
-          'mixtral-8x7b',        -- Grátis
+                          'llama-3.1-70b',       -- Pago
+                          'llama-3.3-70b-versatile', -- Pago
+                          'gemma-2-27b',         -- Pago
+                          'mixtral-8x7b-latest', -- Pago
+                          'llama-3.1-70b-latest' -- Pago
+                        ) NOT NULL DEFAULT 'llama-3.1-8b',
+                        `reg_date` timestamp NOT NULL DEFAULT current_timestamp(),
+                        PRIMARY KEY (`id`)
+                      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+                  ");
 
-          'llama-3.1-70b',       -- Pago
-          'llama-3.3-70b-versatile', -- Pago (substitui o 3.1-70b-versatile que foi descontinuado)
-          'gemma-2-27b',         -- Pago
-          'mixtral-8x7b-latest', -- Pago
-          'llama-3.1-70b-latest' -- Pago
-        ) NOT NULL DEFAULT 'llama-3.1-8b'
-        AFTER `apikey`;
-      ");
-                ok('Criada tabela do dso_apikey_ia do Dashboard Smart Office 4.0');
+                  ok('Criada tabela dso_apikey_ia do Dashboard Smart Office 4.0');
               } catch (PDOException $e) {
-                fail('Erro criando tabela dso_apikey_ia: ' . $e->getMessage());
+                  fail('Erro criando tabela dso_apikey_ia: ' . $e->getMessage());
               }
+
 
 
 

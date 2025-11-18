@@ -41,6 +41,33 @@ Smart Office Hybrid 4.0 is an AI-powered universal dashboard. It reads your exis
 
 ### 🖼 Visual Demo
 - Add screenshots or GIFs here (Admin, Dashboard, Graph Builder).
+<p align="center">
+  <img src="images/Screenshot_1.png" width="450" alt="Smart Office Hybrid 4.0 Logo">
+</p>
+<p align="center">
+  <img src="images/Screenshot_2.png" width="450" alt="Smart Office Hybrid 4.0 Logo">
+</p>
+<p align="center">
+  <img src="images/Screenshot_3.png" width="450" alt="Smart Office Hybrid 4.0 Logo">
+</p>
+<p align="center">
+  <img src="images/Screenshot_4.png" width="450" alt="Smart Office Hybrid 4.0 Logo">
+</p>
+<p align="center">
+  <img src="images/Screenshot_5.png" width="450" alt="Smart Office Hybrid 4.0 Logo">
+</p>
+<p align="center">
+  <img src="images/Screenshot_6.png" width="450" alt="Smart Office Hybrid 4.0 Logo">
+</p>
+<p align="center">
+  <img src="images/Screenshot_7.png" width="450" alt="Smart Office Hybrid 4.0 Logo">
+</p>
+<p align="center">
+  <img src="images/Screenshot_8.png" width="450" alt="Smart Office Hybrid 4.0 Logo">
+</p>
+<p align="center">
+  <img src="images/Screenshot_9.png" width="450" alt="Smart Office Hybrid 4.0 Logo">
+</p>
 
 ### 🏗 Project Architecture
 
@@ -143,7 +170,8 @@ if ($msg === '1') {
 
 ### 📜 License
 - CC BY-NC 4.0 — Non-commercial use only
-- `https://creativecommons.org/licenses/by-nc/4.0/`
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC--BY--NC--4.0-blue.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
+
 
 ---
 
@@ -271,4 +299,4 @@ if ($msg === '1') {
 
 ### 📜 Licença
 - CC BY-NC 4.0 — Uso não comercial
-- `https://creativecommons.org/licenses/by-nc/4.0/`
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC--BY--NC--4.0-blue.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
