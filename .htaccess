@@ -1,0 +1,93 @@
+# ============================================
+# .htaccess - Smart Office
+#   Arquivo de configuração do servidor Apache
+# ============================================
+
+RewriteEngine On
+RewriteBase /SmartOfficeHybrid/
+
+# Define charset UTF-8
+AddDefaultCharset UTF-8
+
+# Força index.php como página inicial
+DirectoryIndex index.php
+
+# ============================================
+# Condicionais basicas
+# ============================================
+
+# Se o arquivo ou pasta pedida existe, entregue e pare por aqui
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Se não existir api/database.php ainda, manda para o instalador
+RewriteCond %{REQUEST_URI} ^/SmartOfficeHybrid/?$ [NC]
+RewriteCond %{DOCUMENT_ROOT}/SmartOfficeHybrid/api/database.php !-f
+RewriteRule ^$ install.php [R=302,L]
+
+# Redireciona todas as requisições amigáveis para o index.php
+# Exemplo: /SmartOfficeHybrid/install → index.php?route=install
+RewriteRule ^install$ install.php [L,QSA]
+RewriteRule ^admin/?$ admin/ [L,QSA]
+RewriteRule ^$ index.php [L,QSA]
+RewriteRule ^(.+)$ index.php?route=$1 [L,QSA]
+
+# ============================================
+# ROTAS BÁSICAS
+# ============================================
+
+# ADMIN  
+RewriteRule ^admin$ admin/home.php [L]
+RewriteRule ^admin/$ admin/home.php [L]
+RewriteRule ^admin/home$ admin/home.php [L]
+
+RewriteRule ^admin$ admin/dashboard.php [L]
+RewriteRule ^admin/$ admin/dashboard.php [L]
+RewriteRule ^admin/dashboard$ admin/dashboard.php [L]
+
+RewriteRule ^admin$ admin/preferences.php [L]
+RewriteRule ^admin/$ admin/preferences.php [L]
+RewriteRule ^admin/preferences$ admin/preferences.php [L]
+
+RewriteRule ^admin$ admin/login.php [L]
+RewriteRule ^admin/$ admin/login.php [L]
+RewriteRule ^admin/login$ admin/login.php [L]
+
+RewriteRule ^admin$ admin/editbd.php [L]
+RewriteRule ^admin/$ admin/editbd.php [L]
+RewriteRule ^admin/editbd$ admin/editbd.php [L]
+
+RewriteRule ^admin$ admin/tabelas.php [L]
+RewriteRule ^admin/$ admin/tabelas.php [L]
+RewriteRule ^admin/tabelas$ admin/tabelas.php [L]
+
+RewriteRule ^admin$ admin/novagrafico.php [L]
+RewriteRule ^admin/$ admin/novagrafico.php [L]
+RewriteRule ^admin/novagrafico$ admin/novagrafico.php [L]
+
+RewriteRule ^admin$ admin/list_columns.php [L]
+RewriteRule ^admin/$ admin/list_columns.php [L]
+RewriteRule ^admin/list_columns$ admin/list_columns.php [L]
+
+RewriteRule ^admin$ admin/login_redirect.php [L]
+RewriteRule ^admin/$ admin/login_redirect.php [L]
+RewriteRule ^admin/login_redirect$ admin/login_redirect.php [L]
+
+RewriteRule ^admin$ admin/logout.php [L]
+RewriteRule ^admin/$ admin/logout.php [L]
+RewriteRule ^admin/logout$ admin/logout.php [L]
+
+# API
+RewriteRule ^api/database$ api/database.php [L]
+RewriteRule ^api/functions$ api/functions.php [L]
+
+
+# ==============================================
+# Segurança básica
+# ==============================================
+# Segurança básica (bloqueia arquivos sensíveis)
+<FilesMatch "(^\.|composer\.json|config\.php|database\.php|README\.md|env)">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
