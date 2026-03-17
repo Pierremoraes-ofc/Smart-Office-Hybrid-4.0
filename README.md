@@ -249,19 +249,19 @@ Smart Office Hybrid 4.0 é um dashboard universal com IA. Ele lê seus dados de 
       <td>
         <details>
           <summary><img src="images/Screenshot_1.png" width="300" alt="Screenshot 1"></summary>
-          <img src="images/Screenshot_1.png" width="900" alt="Screenshot 1 Expandido">
+          <img src="images/Screenshot_1.png" width="1600" alt="Screenshot 1 Expandido">
         </details>
       </td>
       <td>
         <details>
           <summary><img src="images/Screenshot_2.png" width="300" alt="Screenshot 2"></summary>
-          <img src="images/Screenshot_2.png" width="900" alt="Screenshot 2 Expandido">
+          <img src="images/Screenshot_2.png" width="1600" alt="Screenshot 2 Expandido">
         </details>
       </td>
       <td>
         <details>
           <summary><img src="images/Screenshot_3.png" width="300" alt="Screenshot 3"></summary>
-          <img src="images/Screenshot_3.png" width="900" alt="Screenshot 3 Expandido">
+          <img src="images/Screenshot_3.png" width="1600" alt="Screenshot 3 Expandido">
         </details>
       </td>
     </tr>
@@ -269,19 +269,19 @@ Smart Office Hybrid 4.0 é um dashboard universal com IA. Ele lê seus dados de 
       <td>
         <details>
           <summary><img src="images/Screenshot_4.png" width="300" alt="Screenshot 4"></summary>
-          <img src="images/Screenshot_4.png" width="900" alt="Screenshot 4 Expandido">
+          <img src="images/Screenshot_4.png" width="1600" alt="Screenshot 4 Expandido">
         </details>
       </td>
       <td>
         <details>
           <summary><img src="images/Screenshot_5.png" width="300" alt="Screenshot 5"></summary>
-          <img src="images/Screenshot_5.png" width="900" alt="Screenshot 5 Expandido">
+          <img src="images/Screenshot_5.png" width="1600" alt="Screenshot 5 Expandido">
         </details>
       </td>
       <td>
         <details>
           <summary><img src="images/Screenshot_6.png" width="300" alt="Screenshot 6"></summary>
-          <img src="images/Screenshot_6.png" width="900" alt="Screenshot 6 Expandido">
+          <img src="images/Screenshot_6.png" width="1600" alt="Screenshot 6 Expandido">
         </details>
       </td>
     </tr>
@@ -289,19 +289,31 @@ Smart Office Hybrid 4.0 é um dashboard universal com IA. Ele lê seus dados de 
       <td>
         <details>
           <summary><img src="images/Screenshot_7.png" width="300" alt="Screenshot 7"></summary>
-          <img src="images/Screenshot_7.png" width="900" alt="Screenshot 7 Expandido">
+          <img src="images/Screenshot_7.png" width="1600" alt="Screenshot 7 Expandido">
         </details>
       </td>
       <td>
         <details>
           <summary><img src="images/Screenshot_8.png" width="300" alt="Screenshot 8"></summary>
-          <img src="images/Screenshot_8.png" width="900" alt="Screenshot 8 Expandido">
+          <img src="images/Screenshot_8.png" width="1600" alt="Screenshot 8 Expandido">
         </details>
       </td>
       <td>
         <details>
           <summary><img src="images/Screenshot_9.png" width="300" alt="Screenshot 9"></summary>
-          <img src="images/Screenshot_9.png" width="900" alt="Screenshot 9 Expandido">
+          <img src="images/Screenshot_9.png" width="1600" alt="Screenshot 9 Expandido">
+        </details>
+      </td>
+      <td>
+        <details>
+          <summary><img src="images/install.png" width="300" alt="Screenshot 10"></summary>
+          <img src="images/install.png" width="1600" alt="Screenshot 10 Expandido">
+        </details>
+      </td>
+      <td>
+        <details>
+          <summary><img src="images/install2.png" width="300" alt="Screenshot 11"></summary>
+          <img src="images/install2.png" width="1600" alt="Screenshot 11 Expandido">
         </details>
       </td>
     </tr>
