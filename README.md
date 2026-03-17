@@ -101,6 +101,8 @@ Smart Office Hybrid 4.0 is an AI-powered universal dashboard. It reads your exis
           <img src="images/Screenshot_9.png" width="900" alt="Screenshot 9 Expandido">
         </details>
       </td>
+    </tr>
+    <tr>
       <td>
         <details>
           <summary><img src="images/install.png" width="300" alt="Screenshot 10"></summary>
@@ -247,74 +249,65 @@ Smart Office Hybrid 4.0 é um dashboard universal com IA. Ele lê seus dados de 
   <table>
     <tr>
       <td>
-        <details>
-          <summary><img src="images/Screenshot_1.png" width="300" alt="Screenshot 1"></summary>
-          <img src="images/Screenshot_1.png" width="1600" alt="Screenshot 1 Expandido">
-        </details>
+        <a href="images/Screenshot_1.png">
+          <img src="images/Screenshot_1.png" width="300" alt="Screenshot 1">
+        </a>
       </td>
       <td>
-        <details>
-          <summary><img src="images/Screenshot_2.png" width="300" alt="Screenshot 2"></summary>
-          <img src="images/Screenshot_2.png" width="1600" alt="Screenshot 2 Expandido">
-        </details>
+        <a href="images/Screenshot_2.png">
+          <img src="images/Screenshot_2.png" width="300" alt="Screenshot 2">
+        </a>
       </td>
       <td>
-        <details>
-          <summary><img src="images/Screenshot_3.png" width="300" alt="Screenshot 3"></summary>
-          <img src="images/Screenshot_3.png" width="1600" alt="Screenshot 3 Expandido">
-        </details>
+        <a href="images/Screenshot_3.png">
+          <img src="images/Screenshot_3.png" width="300" alt="Screenshot 3">
+        </a>
       </td>
     </tr>
     <tr>
       <td>
-        <details>
-          <summary><img src="images/Screenshot_4.png" width="300" alt="Screenshot 4"></summary>
-          <img src="images/Screenshot_4.png" width="1600" alt="Screenshot 4 Expandido">
-        </details>
+        <a href="images/Screenshot_4.png">
+          <img src="images/Screenshot_4.png" width="300" alt="Screenshot 4">
+        </a>
       </td>
       <td>
-        <details>
-          <summary><img src="images/Screenshot_5.png" width="300" alt="Screenshot 5"></summary>
-          <img src="images/Screenshot_5.png" width="1600" alt="Screenshot 5 Expandido">
-        </details>
+        <a href="images/Screenshot_5.png">
+          <img src="images/Screenshot_5.png" width="300" alt="Screenshot 5">
+        </a>
       </td>
       <td>
-        <details>
-          <summary><img src="images/Screenshot_6.png" width="300" alt="Screenshot 6"></summary>
-          <img src="images/Screenshot_6.png" width="1600" alt="Screenshot 6 Expandido">
-        </details>
+        <a href="images/Screenshot_6.png">
+          <img src="images/Screenshot_6.png" width="300" alt="Screenshot 6">
+        </a>
       </td>
     </tr>
     <tr>
       <td>
-        <details>
-          <summary><img src="images/Screenshot_7.png" width="300" alt="Screenshot 7"></summary>
-          <img src="images/Screenshot_7.png" width="1600" alt="Screenshot 7 Expandido">
-        </details>
+        <a href="images/Screenshot_7.png">
+          <img src="images/Screenshot_7.png" width="300" alt="Screenshot 7">
+        </a>
       </td>
       <td>
-        <details>
-          <summary><img src="images/Screenshot_8.png" width="300" alt="Screenshot 8"></summary>
-          <img src="images/Screenshot_8.png" width="1600" alt="Screenshot 8 Expandido">
-        </details>
+        <a href="images/Screenshot_8.png">
+          <img src="images/Screenshot_8.png" width="300" alt="Screenshot 8">
+        </a>
       </td>
       <td>
-        <details>
-          <summary><img src="images/Screenshot_9.png" width="300" alt="Screenshot 9"></summary>
-          <img src="images/Screenshot_9.png" width="1600" alt="Screenshot 9 Expandido">
-        </details>
+        <a href="images/Screenshot_9.png">
+          <img src="images/Screenshot_9.png" width="300" alt="Screenshot 9">
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="images/install.png">
+          <img src="images/install.png" width="300" alt="Screenshot 10">
+        </a>
       </td>
       <td>
-        <details>
-          <summary><img src="images/install.png" width="300" alt="Screenshot 10"></summary>
-          <img src="images/install.png" width="1600" alt="Screenshot 10 Expandido">
-        </details>
-      </td>
-      <td>
-        <details>
-          <summary><img src="images/install2.png" width="300" alt="Screenshot 11"></summary>
-          <img src="images/install2.png" width="1600" alt="Screenshot 11 Expandido">
-        </details>
+        <a href="images/install2.png">
+          <img src="images/install2.png" width="300" alt="Screenshot 11">
+        </a>
       </td>
     </tr>
   </table>
